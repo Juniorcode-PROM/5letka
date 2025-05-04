@@ -6,8 +6,11 @@ from django.db import models
 
 
 class Task(models.Model):
-    """Это крутая молодёжная моделька задачи"""
+    """Это крутая молодёжная моделька задачи!"""
+
     class Status(models.TextChoices):
+        """Это крутая молодёжная моделька задачи номер 2!."""
+
         NOT_STARTED = "N", "Not started"
         IN_PROGRESS = "I", "In progress"
         DONE = "D", "Done"
