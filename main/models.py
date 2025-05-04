@@ -1,14 +1,12 @@
 from django.contrib.auth.models import User
-from django.db import models
 from django.db.models import ForeignKey
-
-
 from django.db import models
 
 # Create your models here.
 
 
-class task(models.Model):
+class Task(models.Model):
+    """Это крутая молодёжная моделька задачи"""
     class Status(models.TextChoices):
         NOT_STARTED = "N", "Not started"
         IN_PROGRESS = "I", "In progress"
