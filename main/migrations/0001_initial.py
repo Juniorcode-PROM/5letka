@@ -15,14 +15,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='task',
+            name="task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=110)),
-                ('text', models.TextField()),
-                ('status', models.CharField(choices=[('N', 'Not started'), ('I', 'In progress'), ('D', 'Done')], default='N', max_length=1)),
-                ('deadline', models.DateTimeField(default=None, null=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("title", models.CharField(max_length=110)),
+                ("text", models.TextField()),
+                ("status", models.CharField(choices=[("N", "Not started"), ("I", "In progress"), ("D", "Done")], default="N", max_length=1)),
+                ("deadline", models.DateTimeField(default=None, null=True)),
+                ("author", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

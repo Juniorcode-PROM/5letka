@@ -1,12 +1,11 @@
 from django.contrib.auth.models import User
-from django.db.models import ForeignKey
 from django.db import models
 
 # Create your models here.
 
 
 class Task(models.Model):
-    """Это крутая молодёжная моделька задачи!"""
+    """Это крутая молодёжная моделька задачи."""
 
     class Status(models.TextChoices):
         """Это крутая молодёжная моделька задачи номер 2!."""
@@ -18,5 +17,7 @@ class Task(models.Model):
     title = models.CharField(max_length=110)
     text = models.TextField()
     author = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    status = models.CharField(max_length=1, choices=Status, default=Status.NOT_STARTED)
+    status = models.CharField(
+        max_length=1, choices=Status, default=Status.NOT_STARTED
+    )
     deadline = models.DateTimeField(null=True, default=None)
