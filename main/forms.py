@@ -6,3 +6,8 @@ class RegistrationForm(forms.Form):
 
     username = forms.CharField(max_length=255)
     password = forms.CharField(widget=forms.PasswordInput())
+
+
+class CreateTaskControllerForm(forms.Form):
+    title = forms.CharField(max_length=110)
+    text = forms.TextField()
