@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 
-from main.forms import MoveTaskForm, RegistrationForm
+from main.forms import CreateTaskControllerForm, MoveTaskForm, RegistrationForm
 from main.models import Task
 
 
@@ -26,7 +26,17 @@ def edit_task_view(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if task.author != request.user:
         raise PermissionDenied
-    if request.metho
+    if request.method == "POST":
+        form = CreateTaskControllerForm(request.POST)
+        if form.is_valid():
+            task.title = form.cleaned_data["title"]
+            task.text = form.cleaned_data["text"]
+            task.deadline = form.cleaned_data["deadline"]
+            task.save()
+            return redirect("/")
+    else:
+        form = CreateTaskControllerForm(task)
+    return render(request, "edit-task.html", {"form": form})
 
 @login_required
 def move_task_view(request, task_id):
