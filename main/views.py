@@ -20,7 +20,7 @@ def registration_view(request):
 
 
 def delete_task(request, task_id):
-    """Пощадите _/\_"""
+    r"""Пощадите _/\_."""
     task = get_object_or_404(Task, id=task_id)
     task.delete()
     return redirect("/")
