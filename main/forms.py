@@ -9,7 +9,7 @@ class RegistrationForm(forms.Form):
 
 
 class CreateTaskControllerForm(forms.Form):
-    """класс отслеживания задач"""
+    """класс отслеживания задач."""
 
     title = forms.CharField(max_length=110)
     text = forms.CharField(widget=forms.Textarea())
