@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 
 from main.forms import RegistrationForm
 from main.models import Task
@@ -20,6 +20,7 @@ def registration_view(request):
 
 
 def delete_task(request, task_id):
+    """Пощадите _/\_"""
     task = get_object_or_404(Task, id=task_id)
     task.delete()
     return redirect("/")
