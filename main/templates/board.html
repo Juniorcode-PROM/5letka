@@ -33,7 +33,7 @@
     <div class="col-md-4">
         <h3>In Progress</h3>
         {% for task in tasks %}
-        {% if task.status == "N" %}
+        {% if task.status == "I" %}
         <div class="task">
             <h5>{{ task.title }}</h5>
             <p>{{ task.description }}</p>
@@ -47,7 +47,7 @@
     <div class="col-md-4">
         <h3>Done</h3>
         {% for task in tasks %}
-        {% if task.status == "N" %}
+        {% if task.status == "D" %}
         <div class="task">
             <h5>{{ task.title }}</h5>
             <p>{{ task.description }}</p>
