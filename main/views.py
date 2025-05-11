@@ -64,3 +64,10 @@ def create_task_view(request):
     else:
         form = CreateTaskControllerForm()
     return render(request, "tasks_maker.html", {"form": form})
+
+
+@login_required
+def desk_view(request):
+    """Create desk controller."""
+    tasks = Task.objects.filter(author=request.user)
+    return render(request, "board.html", {"tasks": tasks})
