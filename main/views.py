@@ -18,7 +18,8 @@ def registration_view(request):
         form = RegistrationForm()
     return render(request, "register.html", {"form": form})
 
-def viewing_task(request, task_id):
+
+def view_task_view(request, task_id):
     """ъэ функция в 2 долбанных строчки, делающая очень много."""
     task = get_object_or_404(Task, id=task_id)
     # TODO: fill template name
