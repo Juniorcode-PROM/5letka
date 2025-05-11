@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from main.forms import CreateTaskControllerForm, RegistrationForm
 from main.models import Task
@@ -18,6 +18,13 @@ def registration_view(request):
     else:
         form = RegistrationForm()
     return render(request, "register.html", {"form": form})
+
+
+def delete_task(request, task_id):
+    r"""Пощадите _/\_."""
+    task = get_object_or_404(Task, id=task_id)
+    task.delete()
+    return redirect("/")
 
 
 @login_required

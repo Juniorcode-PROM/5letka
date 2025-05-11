@@ -26,5 +26,6 @@ urlpatterns = [
     path("/login", LoginView.as_view(template_name="login.html")),
     path("/logout", LoginView.as_view()),
     path("/register", main_views.registration_view),
-    path("/new-task", main_views.create_task_view)
+    path("/tasks/<int:task_id>/delete", main_views.delete_task),
+    path("/new-task", main_views.create_task_view),
 ]
