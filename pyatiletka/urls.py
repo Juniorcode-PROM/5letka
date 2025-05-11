@@ -23,6 +23,7 @@ from django.urls import path
 from main import views as main_views
 
 urlpatterns = [
+    path("", main_views.desk_view),
     path("/login", LoginView.as_view(template_name="login.html")),
     path("/logout", LoginView.as_view()),
     path("/register", main_views.registration_view),
