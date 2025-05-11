@@ -1,4 +1,7 @@
+
 from django import forms
+
+from main.models import Task
 
 
 class RegistrationForm(forms.Form):
@@ -6,3 +9,9 @@ class RegistrationForm(forms.Form):
 
     username = forms.CharField(max_length=255)
     password = forms.CharField(widget=forms.PasswordInput())
+
+
+class MoveTaskForm(forms.Form):
+    """Form for moving a task."""
+
+    state_to = forms.ChoiceField(choices=Task.Status)
