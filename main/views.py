@@ -1,7 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect, render
 
-from main.forms import RegistrationForm
+from main.forms import CreateTaskControllerForm, RegistrationForm
 from main.models import Task
 
 
@@ -24,3 +25,21 @@ def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     task.delete()
     return redirect("/")
+
+
+@login_required
+def create_task_view(request):
+    """CreateTaskController."""
+    if request.method == "POST":
+        form = CreateTaskControllerForm(request.POST)
+        if form.is_valid():
+            title= form.cleaned_data["title"]
+            text = form.cleaned_data["text"]
+            deadline = form.cleaned_data["deadline"]
+            Task.objects.create(
+                title=title, text=text,
+                deadline=deadline, author=request.user
+            )
+    else:
+        form = CreateTaskControllerForm()
+    return render(request, "tasks_maker.html", {"form": form})
