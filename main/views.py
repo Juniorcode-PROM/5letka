@@ -1,7 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
-from main.forms import RegistrationForm
+from main.forms import CreateTaskControllerForm, RegistrationForm
+from main.models import Task
 
 
 def registration_view(request):
@@ -16,3 +18,21 @@ def registration_view(request):
     else:
         form = RegistrationForm()
     return render(request, "register.html", {"form": form})
+
+
+@login_required
+def create_task_view(request):
+    """CreateTaskController."""
+    if request.method == "POST":
+        form = CreateTaskControllerForm(request.POST)
+        if form.is_valid():
+            title= form.cleaned_data["title"]
+            text = form.cleaned_data["text"]
+            deadline = form.cleaned_data["deadline"]
+            Task.objects.create(
+                title=title, text=text,
+                deadline=deadline, author=request.user
+            )
+    else:
+        form = CreateTaskControllerForm()
+    return render(request, "tasks_maker.html", {"form": form})
