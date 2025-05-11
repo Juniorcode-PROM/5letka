@@ -27,6 +27,13 @@ def view_task_view(request, task_id):
     return render(request, ".html", {"task": task})
 
 
+def delete_task(request, task_id):
+    r"""Пощадите _/\_."""
+    task = get_object_or_404(Task, id=task_id)
+    task.delete()
+    return redirect("/")
+
+
 @login_required
 def create_task_view(request):
     """CreateTaskController."""
