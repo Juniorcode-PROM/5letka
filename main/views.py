@@ -27,7 +27,7 @@ def move_task_view(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if task.author != request.user:
         raise PermissionDenied
-    form = MoveTaskForm(request.POST)
+    form = MoveTaskForm(request.GET)
     if form.is_valid():
         task.status = form.cleaned_data["state_to"]
         task.save()
