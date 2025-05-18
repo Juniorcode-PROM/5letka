@@ -35,7 +35,11 @@ def edit_task_view(request, task_id):
             task.save()
             return redirect("/")
     else:
-        form = CreateTaskControllerForm(task)
+        form = CreateTaskControllerForm({
+            "title": task.title,
+            "text": task.text,
+            "deadline": task.deadline,
+        })
     return render(request, "edit-task.html", {"form": form})
 
 @login_required

@@ -18,9 +18,8 @@
             <div class="card-body">
                 <h5 class="card-title">{{ task.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">{{ task.short_text }}</h6>
-                                 <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
+                <a href="/tasks/{{task.id}}/edit" class="btn btn-outline-secondary"><i class="bi bi-pen"></i></a>
                 <a href="/tasks/{{task.id}}/move?state_to=I" class="btn btn-outline-secondary">&gt;</a>
-                <a href="/tasks/{{task.id}}/delete" class="btn btn-outline-danger">delete</a>
             </div>
         </div>
         {% endif %}
@@ -37,10 +36,9 @@
             <div class="card-body">
                 <h5 class="card-title">{{ task.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">{{ task.short_text }}</h6>
-            <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
+                <a href="/tasks/{{task.id}}/edit" class="btn btn-outline-secondary"><i class="bi bi-pen"></i></a>
                 <a href="/tasks/{{task.id}}/move?state_to=N" class="btn btn-outline-secondary">&lt;</a>
                 <a href="/tasks/{{task.id}}/move?state_to=D" class="btn btn-outline-secondary">&gt;</a>
-                <a href="/tasks/{{task.id}}/delete" class="btn btn-outline-danger">delete</a>
             </div>
         </div>
         {% endif %}
@@ -57,9 +55,9 @@
             <div class="card-body">
                 <h5 class="card-title">{{ task.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">{{ task.short_text }}</h6>
-            <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
+                <a href="/tasks/{{task.id}}/edit" class="btn btn-outline-secondary"><i class="bi bi-pen"></i></a>
                 <a href="/tasks/{{task.id}}/move?state_to=I" class="btn btn-outline-secondary">&lt;</a>
-                <a href="/tasks/{{task.id}}/delete" class="btn btn-outline-danger">delete</a>
+                <a href="/tasks/{{task.id}}/delete" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i></a>
             </div>
         </div>
         {% endif %}
