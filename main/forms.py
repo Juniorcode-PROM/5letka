@@ -22,4 +22,4 @@ class CreateTaskControllerForm(forms.Form):
 
     title = forms.CharField(max_length=110)
     text = forms.CharField(widget=forms.Textarea())
-    deadline = forms.DateTimeField(null=True, default=None)
+    deadline = forms.DateTimeField(required=False, widget=forms.DateTimeInput())

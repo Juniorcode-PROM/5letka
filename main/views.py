@@ -78,6 +78,7 @@ def create_task_view(request):
                 title=title, text=text,
                 deadline=deadline, author=request.user
             )
+            return redirect("/")
     else:
         form = CreateTaskControllerForm()
     return render(request, "tasks_maker.html", {"form": form})

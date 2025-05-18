@@ -5,24 +5,20 @@
 <hr/>
 
 {% if request.user.is_authenticated %}
-<h4>Add New Task</h4>
-<form method="POST" action="{% url 'add_task' %}">
-    {% csrf_token %}
-    {{ form | crispy }}
-    <button type="submit" class="btn btn-outline-secondary">Add Task</button>
-</form>
+<a href="/new-task" class="btn btn-outline-secondary">Add Task</a>
 {% else %}
 <p class="text-muted">Please log in to add tasks.</p>
 {% endif %}
-{% endblock %}
-<div class="row">
+<div class="row mt-4">
     <div class="col-md-4">
         <h3>To Do</h3>
         {% for task in tasks %}
         {% if task.status == "N" %}
-        <div class="task">
-            <h5>{{ task.title }}</h5>
-            <p>{{ task.description }}</p>
+        <div class="card my-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ task.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{ task.short_text }}</h6>
+            </div>
         </div>
         {% endif %}
         {% empty %}
@@ -38,8 +34,8 @@
             <h5>{{ task.title }}</h5>
             <p>{{ task.description }}</p>
         </div>
-        {% empty %}
         {% endif %}
+        {% empty %}
         <p>No tasks in progress.</p>
         {% endfor %}
     </div>
@@ -52,10 +48,11 @@
             <h5>{{ task.title }}</h5>
             <p>{{ task.description }}</p>
         </div>
-        {% empty %}
         {% endif %}
+        {% empty %}
         <p>No completed tasks.</p>
         {% endfor %}
     </div>
 </div>
 <hr/>
+{% endblock %}

@@ -21,3 +21,7 @@ class Task(models.Model):
         max_length=1, choices=Status, default=Status.NOT_STARTED
     )
     deadline = models.DateTimeField(null=True, default=None)
+
+    @property
+    def short_text(self):
+        return self.text[:min(len(self.text), 32)]
