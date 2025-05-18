@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>{{post.title}}</h1>
-<br/>
-<small>{{post.author.username}}</small>
-<hr/>
-<img src="{{ post.image.url }}" style="max-width: 500px"/>
-<p>{{post.text}}</p>
-<hr/>
-{% endfor %}
+<div class="task-details">
+    <h2>{{ task.title }}</h2>
+    <p><strong>Описание:</strong> {{ task.description }}</p>
+    <p><strong>Статус:</strong> {{ task.status }}</p>
+    <p><strong>Дедлайн:</strong> {{ task.text }}</p>
+</div>
+
+<a href="/" class="btn btn-secondary">Назад ...</a>
 {% endblock %}
