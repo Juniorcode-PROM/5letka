@@ -5,9 +5,8 @@
     <h2>{{ task.title }}</h2>
     <p><strong>Описание:</strong> {{ task.description }}</p>
     <p><strong>Статус:</strong> {{ task.status }}</p>
-    <p><strong>Создано:</strong> {{ task.created_at }}</p>
-    <p><strong>Обновлено:</strong> {{ task.updated_at }}</p>
+    <p><strong>Дедлайн:</strong> {{ task.text }}</p>
 </div>
 
-<a href="#" class="btn btn-secondary">Назад ...</a>
+<a href="/" class="btn btn-secondary">Назад ...</a>
 {% endblock %}
