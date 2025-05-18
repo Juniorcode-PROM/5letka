@@ -18,7 +18,9 @@
             <div class="card-body">
                 <h5 class="card-title">{{ task.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">{{ task.short_text }}</h6>
-                <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
+                                 <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
+                <a href="/tasks/{{task.id}}/move?state_to=I" class="btn btn-outline-secondary">&gt;</a>
+                <a href="/tasks/{{task.id}}/delete" class="btn btn-outline-danger">delete</a>
             </div>
         </div>
         {% endif %}
@@ -31,10 +33,15 @@
         <h3>In Progress</h3>
         {% for task in tasks %}
         {% if task.status == "I" %}
-        <div class="task">
-            <h5>{{ task.title }}</h5>
-            <p>{{ task.description }}</p>
+        <div class="card my-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ task.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{ task.short_text }}</h6>
             <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
+                <a href="/tasks/{{task.id}}/move?state_to=N" class="btn btn-outline-secondary">&lt;</a>
+                <a href="/tasks/{{task.id}}/move?state_to=D" class="btn btn-outline-secondary">&gt;</a>
+                <a href="/tasks/{{task.id}}/delete" class="btn btn-outline-danger">delete</a>
+            </div>
         </div>
         {% endif %}
         {% empty %}
@@ -46,10 +53,14 @@
         <h3>Done</h3>
         {% for task in tasks %}
         {% if task.status == "D" %}
-        <div class="task">
-            <h5>{{ task.title }}</h5>
-            <p>{{ task.description }}</p>
+        <div class="card my-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ task.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{{ task.short_text }}</h6>
             <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
+                <a href="/tasks/{{task.id}}/move?state_to=I" class="btn btn-outline-secondary">&lt;</a>
+                <a href="/tasks/{{task.id}}/delete" class="btn btn-outline-danger">delete</a>
+            </div>
         </div>
         {% endif %}
         {% empty %}
