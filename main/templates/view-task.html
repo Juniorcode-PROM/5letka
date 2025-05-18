@@ -1,12 +1,24 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block content %}
-<h1>{{post.title}}</h1>
-<br/>
-<small>{{post.author.username}}</small>
-<hr/>
-<img src="{{ post.image.url }}" style="max-width: 500px"/>
-<p>{{post.text}}</p>
-<hr/>
-{% endfor %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр задачи</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- CSS файл тип сюда надо -->
+</head>
+<body>
+    <div class="container">
+        <h1>Просмотр задачи</h1>
+
+        <div class="task-details">
+            <h2>{{ task.title }}</h2>
+            <p><strong>Описание:</strong> {{ task.description }}</p>
+            <p><strong>Статус:</strong> {{ task.status }}</p>
+            <p><strong>Создано:</strong> {{ task.created_at }}</p>
+            <p><strong>Обновлено:</strong> {{ task.updated_at }}</p>
+        </div>
+
+        <button onclick="window.history.back();">Назад ко всем задачам</button>
+    </div>
+</body>
+</html>
