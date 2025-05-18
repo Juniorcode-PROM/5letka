@@ -18,6 +18,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ task.title }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">{{ task.short_text }}</h6>
+                <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
             </div>
         </div>
         {% endif %}
@@ -33,6 +34,7 @@
         <div class="task">
             <h5>{{ task.title }}</h5>
             <p>{{ task.description }}</p>
+            <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
         </div>
         {% endif %}
         {% empty %}
@@ -47,6 +49,7 @@
         <div class="task">
             <h5>{{ task.title }}</h5>
             <p>{{ task.description }}</p>
+            <a href="/tasks/{{task.id}}/edit" class="btn btn-primary">Редактировать</a>
         </div>
         {% endif %}
         {% empty %}
